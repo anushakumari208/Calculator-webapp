@@ -26,6 +26,13 @@ import javax.servlet.http.HttpSession;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 	throws ServletException, IOException 
 	{
+		BasicCalc det=new BasicCalc();
+		double a=Double.valueOf(req.getParameter("a"));
+		double b=Double.valueOf(req.getParameter("b"));
+		det.seta(a);
+		det.setb(b);
+		String operation=req.getParameter("operation");
+	
 		// Create an object of BasicCalc class
 		
 		//get parameter with req.getparameter() method and 
@@ -34,13 +41,30 @@ import javax.servlet.http.HttpSession;
 		
 		// get parameter operation 
 		
-	//	switch (operation)		
+		switch (operation)
 		{
-		//write switch cases for calling different method of operations
+		case "Add":
+			c=det.add();
+			System.out.println(c);
+			break;
+		case "Subtract":
+			c=det.subtract();
+			System.out.println(c);
+			break;
+		case "Multiply":
+			c=det.multiply();
+			System.out.println(c);
+			break;
+		case "Divide":
+			c=det.divide();
+			System.out.println(c);
+			break;
+		default:System.out.println("wrong choice");
 		}
+			req.setAttribute("answer",c);
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 		rd.forward(req, resp); 
-		} 
+		}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -48,7 +72,7 @@ import javax.servlet.http.HttpSession;
 	doGet(req, resp);
 	}
 }
-	
+	     
 
 
 
